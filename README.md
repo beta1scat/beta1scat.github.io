@@ -7,6 +7,7 @@ Static bilingual academic homepage for GitHub Pages, together with Chinese and E
 - `index.html`: homepage entry.
 - `style.css`: visual system and responsive layout.
 - `script.js`: English/Chinese switching logic.
+- `pyproject.toml`: Python version and dependencies managed by `uv`.
 - `latex/cv_zh.tex`: Chinese LaTeX resume source.
 - `latex/cv_en.tex`: English LaTeX resume source.
 - `resume/`: generated PDF resumes.
@@ -29,13 +30,21 @@ cp "latex/build-en/cv_en.pdf" "resume/QunNiu_BeijingInstituteofTechnology_nq_eec
 
 ## Preview locally
 
-Any static file server is sufficient. For example:
+Install [`uv`](https://docs.astral.sh/uv/getting-started/installation/), then synchronize the Python environment from the repository root:
 
 ```bash
-python -m http.server 8000
+uv sync
+```
+
+Start a local static file server through the `uv`-managed environment:
+
+```bash
+uv run python -m http.server 8000
 ```
 
 Then open `http://localhost:8000/`.
+
+Python dependencies are declared in `pyproject.toml` and locked in `uv.lock`. Use `uv add <package>` to add a runtime dependency or `uv add --dev <package>` to add a development dependency.
 
 ## Deploy to GitHub Pages
 

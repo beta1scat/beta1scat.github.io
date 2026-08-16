@@ -13,9 +13,14 @@
 \renewcommand{\headrulewidth}{0pt}
 \cfoot{\thepage}
 
-\setmainfont{TeX Gyre Pagella}
+\setmainfont{texgyrepagella-regular.otf}[
+  BoldFont = texgyrepagella-bold.otf,
+  ItalicFont = texgyrepagella-italic.otf,
+  BoldItalicFont = texgyrepagella-bolditalic.otf
+]
 \definecolor{titlecolor}{HTML}{18314A}
 \definecolor{textgray}{HTML}{4D5B69}
+\definecolor{linkblue}{HTML}{005EA8}
 \titleformat{\section}{\large\bfseries\color{titlecolor}}{}{0pt}{}
 \titlespacing*{\section}{0pt}{10pt}{6pt}
 \setlist[itemize]{leftmargin=1.5em, itemsep=2pt, topsep=3pt}
@@ -26,14 +31,15 @@
   \textbf{#1} \hfill #2\\
   {\color{textgray}#3} \hfill {#4}\\[-2pt]
 }
+\newcommand{\textlink}[2]{\href{#1}{\color{linkblue}\underline{#2}}}
 
 \begin{document}
 
 {\LARGE\bfseries\color{titlecolor} Qun Niu}\\[4pt]
 Beijing Institute of Technology \quad Ph.D. Candidate in M.E. (Expected graduation: Dec. 2026)\\
 I am currently seeking suitable industry positions or postdoctoral opportunities\\
-Email: \href{mailto:nq_eecm@163.com}{nq\_eecm@163.com} \quad Mobile: 15601280520\\
-Homepage: \href{https://beta1scat.github.io/}{https://beta1scat.github.io/}
+Email: \textlink{mailto:nq_eecm@163.com}{nq\_eecm@163.com} \quad Mobile: 15601280520\\
+Website: \textlink{https://beta1scat.github.io/}{beta1scat.github.io} \quad Academic Profile: \textlink{https://scholar.google.com/citations?hl=en\&user=6E4Hd8UAAAAJ}{Google Scholar}
 
 \section*{Profile}
 I am a Ph.D. candidate in Mechanical Engineering at Beijing Institute of Technology. My research focuses on robot perception, motion planning, and grasp planning, especially for grasping in cluttered or unstructured scenes. I work on integrating 3D vision, geometric reasoning, kinematic analysis, and task execution into coherent robotic systems. My recent work spans inverse kinematics, hand-eye and tool calibration, point-cloud pose estimation, scene understanding through geometric primitive fitting, and language-guided grasping. In addition to geometry-driven and analytical methods, I also incorporate learning-based methods into robotic tasks and am currently exploring VLA and reinforcement learning. I am experienced with C/C++, Python, PyTorch, and ROS, enjoy challenging problems, and adapt quickly to new methods and tools.

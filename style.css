@@ -8,6 +8,8 @@
   --line: rgba(23, 33, 44, 0.12);
   --accent: #9d6c39;
   --accent-deep: #7a5127;
+  --link: #005ea8;
+  --link-hover: #003f73;
   --shadow: 0 22px 50px rgba(26, 35, 45, 0.09);
   --radius: 24px;
   --radius-sm: 18px;
@@ -232,28 +234,56 @@ img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   min-height: 48px;
   padding: 0 18px;
   border-radius: 999px;
   border: 1px solid transparent;
   font-weight: 600;
-  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease, color 180ms ease;
 }
 
 .button:hover,
 .button:focus-visible {
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(23, 33, 44, 0.14);
 }
 
-.button.primary {
-  background: var(--text);
-  color: #fff;
+.button:focus-visible {
+  outline: 3px solid rgba(157, 108, 57, 0.38);
+  outline-offset: 3px;
 }
 
 .button.secondary {
-  background: transparent;
-  color: var(--text);
+  color: var(--link);
+  background: rgba(255, 252, 247, 0.48);
   border-color: var(--line);
+}
+
+.hero-actions .button .lang-block {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+.button.secondary:hover,
+.button.secondary:focus-visible {
+  color: var(--link-hover);
+  background: rgba(255, 252, 247, 0.9);
+  border-color: rgba(23, 33, 44, 0.32);
+}
+
+.external-link-icon {
+  display: inline-block;
+  font-size: 0.9em;
+  line-height: 1;
+  transition: transform 180ms ease;
+}
+
+.button:hover .external-link-icon,
+.button:focus-visible .external-link-icon {
+  transform: translate(2px, -2px);
 }
 
 .profile-panel {
