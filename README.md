@@ -8,24 +8,36 @@ Static bilingual academic homepage for GitHub Pages, together with Chinese and E
 - `style.css`: visual system and responsive layout.
 - `script.js`: English/Chinese switching logic.
 - `pyproject.toml`: Python version and dependencies managed by `uv`.
-- `latex/cv_zh.tex`: Chinese LaTeX resume source.
+- `Makefile`: automated build, compilation, and file synchronization.
+- `latex/cv_zh.tex`: Chinese full LaTeX resume source.
+- `latex/cv_zh_print.tex`: Chinese 2-page print-optimized LaTeX resume source.
 - `latex/cv_en.tex`: English LaTeX resume source.
 - `resume/`: generated PDF resumes.
 
 ## Generate PDF resumes
 
-Run the following commands from the repository root:
+The repository includes a `Makefile` to automate compilation, renaming, and synchronization. Run from the repository root:
+
+```bash
+make          # Build all resumes (ZH, EN, Print) and automatically sync to resume/
+```
+
+Granular commands are also available:
+
+```bash
+make zh       # Build Chinese resume and copy to resume/
+make en       # Build English resume and copy to resume/
+make print    # Build Chinese 2-page print resume to latex/build-zh/cv_zh_print.pdf
+make clean    # Clean intermediate auxiliary files (*.aux, *.log, *.fls, etc.)
+make serve    # Start local preview server via uv
+```
+
+If `make` is not used, the manual compilation commands remain:
 
 ```bash
 latexmk -xelatex -interaction=nonstopmode -output-directory=latex/build-zh -jobname=cv_zh latex/cv_zh.tex
 latexmk -xelatex -interaction=nonstopmode -output-directory=latex/build-en -jobname=cv_en latex/cv_en.tex
-```
-
-Then copy the generated PDFs to the `resume/` directory with the final filenames:
-
-```bash
-cp "latex/build-zh/cv_zh.pdf" "resume/牛群_北京理工大学_nq_eecm@163.com_15601280520.pdf"
-cp "latex/build-en/cv_en.pdf" "resume/QunNiu_BeijingInstituteofTechnology_nq_eecm@163.com_15601280520.pdf"
+latexmk -xelatex -interaction=nonstopmode -output-directory=latex/build-zh -jobname=cv_zh_print latex/cv_zh_print.tex
 ```
 
 ## Preview locally
